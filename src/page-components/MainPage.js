@@ -27,7 +27,7 @@ function MainPage() {
   const pages = {
     'Anasayfa': <HomePage updatePage = {updateCurrentPage} />,
     'Ürün Girişi': <AddProductPage/>,
-    'Stok Yönetimi': <StockPage/>,
+    'Stok Yönetimi': <StockPage updatePage = {updateCurrentPage}/>,
     'Ürün Çıkışı': <RemoveProductPage />,
   }
 

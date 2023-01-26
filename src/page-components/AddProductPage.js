@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Header, Modal } from 'semantic-ui-react'
 import {saveNewProducts} from '../utilities/dataUtility.js'
 import deleteIcon from '../assets/icons/close-blue.svg'
 
@@ -11,6 +12,9 @@ function AddProductPage() {
     }
 
     const [newProducts, setNewProducts] = useState([defaultEntry])
+    const [formPopup, setFormPopup] = useState(false)
+    const [popupMessage, setPopupMessage] = useState(0);
+
 
    
     const renderProductEntries = () => {
@@ -55,6 +59,23 @@ function AddProductPage() {
         })
     }
 
+    const renderFormPopup = () => {
+        return (
+            <Modal id='form-popup'
+                closeIcon
+                open={formPopup}
+                onClose={() => setFormPopup(false)}
+                size={'tiny'}>
+                
+                <Header icon='check circle' content='Ürün Girişi Başarılı' />
+                <Modal.Content>
+                    <p>
+                        {popupMessage} ürün depoya eklendi.
+                    </p>
+                </Modal.Content>
+            </Modal>
+        )     
+    }
 
     const handleAddProduct = () => {
         setNewProducts([...newProducts, {...defaultEntry}])
@@ -73,8 +94,21 @@ function AddProductPage() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();  
+        
+        const button = document.getElementById('add-product-submit-btn')
+
+        button.classList.toggle('sending')
+        button.setAttribute('disabled', true)
 
         saveNewProducts(newProducts)
+        
+        setPopupMessage(newProducts.length)
+        setFormPopup(true)
+        setNewProducts([defaultEntry]) 
+
+        button.classList.toggle('sending');
+        button.removeAttribute('disabled');
+
     }
 
     return (
@@ -84,8 +118,11 @@ function AddProductPage() {
             <section id='add-product-form' className='page-section'>
                 <form name='add-product' onSubmit={handleFormSubmit}>
                    {renderProductEntries()}
+                   
                    <button id='new-btn' type='button' onClick={handleAddProduct}>+ Yeni Ürün Ekle</button>
                    <input id='add-product-submit-btn' type='submit' value='Ürün Girişi Yap'/>
+
+                   {formPopup && renderFormPopup()}
                 </form>
             </section>
         </main>
