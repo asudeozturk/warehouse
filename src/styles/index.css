@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -35,6 +35,8 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
   --color-bg-primary: var(--color-white);
   --color-bg-secondary: var(--color-white-dark);
   --color-bg-tertiary: var(--color-blue);
+  --color-bg-quaternary: var(--color-blue-dark);
+
 
 
   --color-border-primary: var(--color-gray-light);
@@ -454,7 +456,7 @@ h4 {
 #add-product-form #new-btn {
   color: var(--color-heading-primary);
   font-size: 1.2em;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0.5em 0 1em;
   
 }
@@ -462,12 +464,44 @@ h4 {
 #add-product-submit-btn {
   background-color: var(--color-btn-primary);
   color: var(--color-btn-secondary);
-  font-weight: 400;
+  font-weight: 600;
   margin: 1em auto;
   padding: 1em 2em;
 
   width: 80%;
   max-width: 475px;
+}
+
+#add-product-submit-btn.sending {
+  background-color: limegreen;
+}
+
+/* ---------- STOCK PAGE STYLES ---------- */
+
+#stock-page #stock-pagination {
+  margin-bottom: 2em;
+  display: flex;
+  width: max-content;
+  margin-left: auto;
+ 
+}
+
+#stock-page #stock-table th{
+  background-color:  var(--color-bg-tertiary);
+  color: var(--color-text-tertiary);
+  font-weight: 600;
+}
+
+
+#stock-no-product .navigate-btn {
+  background-color: var(--color-btn-primary);
+  border-radius: 3px;
+  color: var(--color-btn-secondary);
+  display: block;
+  font-weight: 400;
+  margin: 2em 0;
+  padding: 1.25em 4em 1.25em 2em;
+  width: max-content;
 }
 
 
