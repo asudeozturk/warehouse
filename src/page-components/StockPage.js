@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import {Pagination, Table, TableHeader, TableHeaderCell } from 'semantic-ui-react';
 import { getProducts } from '../utilities/dataUtility'
 
@@ -9,6 +9,9 @@ function StockPage(props) {
     const [activePage, setActivePage] = useState(1)
     
 
+    useEffect (() => {
+        setProductData(getProducts())
+    }, [])
     const renderTable = () => {
         return (
         <>
@@ -79,7 +82,7 @@ function StockPage(props) {
         <main id='stock-page' className='page-content'>
             <h1 className='page-heading'>Depo Stok Yönetimi</h1>
 
-            { productData 
+            { (productData && Object.keys(productData).length > 0)
                 ? renderTable()
                 : renderNoProductInfo()
             }

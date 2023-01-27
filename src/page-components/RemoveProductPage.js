@@ -106,12 +106,6 @@ function RemoveProductPage() {
             setEntries([defaultEntry]) 
         }
         else {
-            setPopupMessage({
-                'type' : 'fail',
-                'header' : 'Ürün Çıkışı Başarısız',
-                'message' : 'Girilen ürünler stokta olmayabilir veya girilen adet stok adedinden fazla olabilir. Lütfen kontrol ediniz.'
-            })
-            setFormPopup(true)
         }
 
         
@@ -156,24 +150,25 @@ function RemoveProductPage() {
 
     const displayNotFoundError = (indecies) => {
         const inputs =  document.querySelectorAll('#remove-product-form .pr-item')
-        var message = document.createElement('p')
-        message.classList.add('error-message')
-        message.innerHTML='Girilen ürün stokta mevcut değil'
+       
         
         indecies.forEach(index => {
+            var message = document.createElement('p')
+            message.classList.add('error-message')
+            message.innerHTML='Girilen ürün stokta mevcut değil'
             inputs[index].insertBefore(message, inputs[index].firstChild)
         })
     }
 
     const displayInsufficientError = (indecies) => {
         const inputs =  document.querySelectorAll('#remove-product-form .pr-item')
-        var message = document.createElement('p')
-        message.classList.add('error-message')
-        message.innerHTML='Girilen adet stok adedinden fazladır'
+        
         
         indecies.forEach(index => {
+            var message = document.createElement('p')
+            message.classList.add('error-message')
+            message.innerHTML='Girilen adet stok adedinden fazladır'
             inputs[index].insertBefore(message, inputs[index].firstChild)
-
         })
     }
 
