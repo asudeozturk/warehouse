@@ -41,6 +41,8 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
   --color-border-primary: var(--color-gray-light);
   --color-border-secondary: var(--color-blue);
+  --color-border-tertiary: var(--color-blue-dark);
+
 
   --color-btn-primary: var(--color-blue);
   --color-btn-secondary: var(--color-white);
@@ -268,26 +270,9 @@ h4 {
 
 /* ---------- HEADER STYLES ---------- */
 
-@keyframes appearingBackground {
-  from {
-    background-color: transparent;
-  }
-  to {
-    background-color: var(--color-bg-tertiary);
-  }
-}
-
-@keyframes disappearingBackground {
-  from {
-    background-color: var(--color-bg-tertiary);
-  }
-  to {
-    background-color: transparent;
-  }
-}
-
 #header {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
+  box-shadow: 0px 7px 8px -3px rgba(210,210,210,0.6);
   
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -296,15 +281,17 @@ h4 {
 }
 
 #header #menu-btn {
-  animation: appearingBackground 0.5s ease both;
   aspect-ratio: 1;
+  background-color: var(--color-bg-tertiary);
   padding: 1em;
   position: relative;
+  transition: all 0.4s ease;
   z-index: 3;
+
 }
 
 #header #menu-btn.inactive { 
-  animation: disappearingBackground 0.5s ease both;
+  background-color: transparent;
 }
 
 #header #menu-btn .icon {
@@ -313,47 +300,35 @@ h4 {
 }
 
 #header .logo {
+  width: max-content;
+}
+
+#header .logo img{
   width: 11em;
   object-fit: contain;
 }
 
 
+#header .user-panel {
+  display: none;
+}
+
 /* ---------- MENU STYLES ---------- */
 
-@keyframes appearingMenu {
-  from {
-    transform: translateX(-150%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes disappearingMenu {
-  from {
-    transform: translateX(0);
-    display: block;
-  }
-  to {
-    transform: translateX(-150%);
-    display: none;
-  }
-}
-
 #menu {
-  animation: appearingMenu 0.5s ease both;
   background-color: var(--color-bg-tertiary);
   box-shadow: 5px 0px 10px 0px rgba(200,200,200,1);
   color: var(--color-btn-secondary);
   min-height: 100vh;
   padding: 3em 3em 3em 1em;
   position: fixed;
+  transition: all 0.4s ease;
   z-index: 2;
 
 }
 
 #menu.inactive {
-  animation: disappearingMenu 0.5s ease both;
+  transform: translateX(-150%);
 }
 
 #menu-list,
@@ -366,15 +341,54 @@ h4 {
 #menu-list .menu-item button{
   display: flex;
   gap: 0.75em;
+  align-items: center;
 }
 
 #menu-list .menu-item .icon {
-  width: 1.5em;
+  width: 1.75em;
 }
 
 #menu-list .menu-sub-list-heading {
   font-weight: 400;
   margin: 0.5em 0 1em;
+}
+
+#menu .user-panel {
+  margin-top: 200%;
+  display: flex;
+  flex-flow: column-reverse;
+  gap: 1em;
+  justify-content: flex-start;
+}
+
+#menu .user-panel .btn-wrapper {
+  margin-left: 0.5em;
+}
+#menu .user-panel .btn-wrapper button {
+  margin-right: 1em;
+}
+
+#menu .user-panel .btn-wrapper .icon {
+  width: 1.5em;
+}
+
+#menu .user-panel .user-wrapper {    
+  width: max-content;
+  display: flex;
+  flex-flow: row-reverse;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#menu .user-panel .user-wrapper .profile-name{
+  font-weight: 400;
+}
+#menu .user-panel .user-wrapper .profile-photo {
+  border: 1px solid var(--color-gray-dark);
+  border-radius: 50%;
+  box-shadow: 0 0 8px 0 rgba(100,100,100,.15);
+  padding: 3px;
+  width: 3em;
 }
 
 /* ---------- HOME PAGE STYLES ---------- */
@@ -582,7 +596,7 @@ h4 {
     height: 3em;
   }
   
-  #header .logo {
+  #header .logo  img{
     width: 13em;
   }
   
@@ -624,7 +638,7 @@ h4 {
 
   /* ---------- HEADER STYLES ---------- */
 
-  #header .logo {
+  #header .logo img {
     width: 15em;
   }
   
@@ -698,14 +712,58 @@ h4 {
     padding: 2em 3em 3em;
   }
 
+  /* ---------- HEADER STYLES ---------- */
+
+  #header {
+    grid-template-columns: max-content max-content 1fr;
+  }
+
+  #header .user-panel {
+
+    justify-self: flex-end;
+    margin-right: 1em;
+
+    display: flex;
+    gap: 1em;
+    align-items: center;
+  }
+
+  #header .user-panel .btn-wrapper button {
+    margin-left: 0.5em ;
+  }
+  #header .user-panel .btn-wrapper .icon {
+    width: 1.5em;
+  }
+
+  #header .user-panel .user-wrapper {    
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  #header .user-panel .user-wrapper .profile-name{
+    font-weight: 500;
+  }
+
+  #header .user-panel .user-wrapper .profile-photo {
+    border: 1px solid var(--color-border-tertiary);
+    border-radius: 50%;
+    box-shadow: 0 0 8px 0 rgba(100,100,100,.15);
+    padding: 3px;
+    width: 3em;
+  }
+
   /* ---------- MENU STYLES ---------- */
   #menu {
     padding: 3em 4em 3em 2em;
   }
 
+  #menu .user-panel {
+    display: none;
+  }
+
   /* ---------- REMOVE PRODUCT PAGE STYLES ---------- */
 
- 
 
   #remove-product-form .pr-item {
     padding: 1em 1.5em;
@@ -743,7 +801,7 @@ h4 {
 
   /* ---------- HEADER STYLES ---------- */
 
-  #header .logo {
+  #header .logo img{
     width: 17em;
   }
   

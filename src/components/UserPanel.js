@@ -1,24 +1,33 @@
 import React from 'react'
 
-import helpIcon from '../assets/icons/help.svg'
-import settingsIcon from '../assets/icons/settings.svg'
+import helpIconDark from '../assets/icons/help-dark.svg'
+import helpIconLight from '../assets/icons/help-light.svg'
+import settingsIconDark from '../assets/icons/settings-dark.svg'
+import settingsIconLight from '../assets/icons/settings-light.svg'
+import logoutIconDark from '../assets/icons/logout-dark.svg'
+import logoutIconLight from '../assets/icons/logout-light.svg'
 import profileIcon from '../assets/icons/profile.svg'
 
-function UserPanel() {
 
+function UserPanel(props) {
+
+  var theme = props.theme
   return (
-    <section id='user-panel'>
-        <div id='btn-wrapper' className='wrapper'>
+    <section className='user-panel'>
+        <div className='btn-wrapper'>
             <button aria-label='yardım'>
-                <img className='icon' src={helpIcon} alt='soru işareti' aria-hidden />
+                <img className='icon' src={theme === 'dark' ? helpIconDark : helpIconLight} alt='soru işareti' aria-hidden />
             </button>
             <button aria-label='ayarlar'>
-                <img className='icon' src={settingsIcon} alt='ayarlar' aria-hidden />
+                <img className='icon' src={theme === 'dark' ? settingsIconDark : settingsIconLight} alt='ayarlar' aria-hidden />
+            </button>
+            <button aria-label='oturumu kapat'>
+                <img className='icon' src={theme === 'dark' ? logoutIconDark : logoutIconLight} alt='çıkış' aria-hidden />
             </button>
         </div>
-        <div id='profile-wrapper' className='wrapper'>
-            <p id='profile-name'>Kullanıcı</p>
-            <img id='profile-photo' src={profileIcon} alt='kullanıcı profili'/>
+        <div className='user-wrapper'>
+            <p className='profile-name'>Admin</p>
+            <img className='profile-photo' src={profileIcon} alt='kullanıcı profili'/>
         </div>
     </section>
   );

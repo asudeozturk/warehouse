@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Header, Modal } from 'semantic-ui-react'
-import {saveNewProducts} from '../utilities/dataUtility.js'
+import {addProducts} from '../utilities/dataUtility.js'
 import deleteIcon from '../assets/icons/close-blue.svg'
 
 function AddProductPage() {
@@ -100,7 +100,7 @@ function AddProductPage() {
         button.classList.toggle('sending')
         button.setAttribute('disabled', true)
 
-        saveNewProducts(newProducts)
+        addProducts(newProducts)
         
         setPopupMessage(newProducts.length)
         setFormPopup(true)

@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import UserPanel from './UserPanel'
+
 
 import homeIcon from '../assets/icons/home-light.svg'
 import prAddIcon from '../assets/icons/product-add-light.svg'
@@ -34,7 +36,7 @@ function Menu(props) {
   }
 
   return (
-    <aside id='menu'>
+    <aside id='menu' className='inactive'>
       <nav id='menu-nav'>
         <ul id='menu-list'>
           <li className='menu-item'>
@@ -67,12 +69,9 @@ function Menu(props) {
               </ul>
           </li>
         </ul>
-       
-
-       
-          
-        
       </nav>
+      <UserPanel 
+        theme={'light'}/>
     </aside>
   );
 }

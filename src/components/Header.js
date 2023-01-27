@@ -5,7 +5,7 @@ import menuIconLight from '../assets/icons/menu-light.svg'
 
 import logoWithName from '../assets/logo-with-name.png'
 
-import UserPanel from '../components/UserPanel'
+import UserPanel from './UserPanel'
 
 function Header(props) {
 
@@ -32,19 +32,26 @@ function Header(props) {
     props.isMenuOpen ? props.updateMenuStatus(false) : props.updateMenuStatus(true)
   }
 
+  const handleHomeClick = () => {
+    props.updatePage('Anasayfa') 
+  }
+
   return (
     <header id='header'>
 
       <div id='menu-btn-wrapper' className='wrapper' >
         <span aria-hidden></span>
-        <button id='menu-btn' aria-label='menü' onClick={handleMenuClick}>
+        <button id='menu-btn' className='inactive' aria-label='menü' onClick={handleMenuClick}>
             <img className='icon' src={menuIconDark} alt='menü ikonu' aria-hidden />
         </button>
       </div>
       
-      <img className='logo' src={logoWithName} alt='warehouse logosu'/>
+      <button onClick={handleHomeClick} className='logo'>
+        <img src={logoWithName} alt='warehouse logosu'/>
+      </button>
 
-      {/* <UserPanel /> */}
+      <UserPanel 
+        theme={'dark'}/>
     </header>
   );
 }

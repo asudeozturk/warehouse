@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 import Header from '../components/Header'
 import Menu from '../components/Menu'
@@ -10,11 +10,8 @@ import RemoveProductPage from '../page-components/RemoveProductPage'
 
 function MainPage() {
 
-  
-
   const [currentPage, setCurrentPage] = useState('Anasayfa');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
 
   const updateIsMenuOpen = (status) => {
     setIsMenuOpen(status)
@@ -39,7 +36,8 @@ function MainPage() {
     <div id='main-page' className='page'>
       <Header 
         isMenuOpen = {isMenuOpen}
-        updateMenuStatus = {updateIsMenuOpen}/>
+        updateMenuStatus = {updateIsMenuOpen}
+        updatePage = {updateCurrentPage}/>
     
       <Menu 
         isMenuOpen = {isMenuOpen}
