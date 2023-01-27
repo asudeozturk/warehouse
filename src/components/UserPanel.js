@@ -1,7 +1,6 @@
 import React from 'react'
+import { Popup } from 'semantic-ui-react'
 
-import helpIconDark from '../assets/icons/help-dark.svg'
-import helpIconLight from '../assets/icons/help-light.svg'
 import settingsIconDark from '../assets/icons/settings-dark.svg'
 import settingsIconLight from '../assets/icons/settings-light.svg'
 import logoutIconDark from '../assets/icons/logout-dark.svg'
@@ -23,9 +22,15 @@ function UserPanel(props) {
             <button aria-label='ayarlar'>
                 <img className='icon' src={theme === 'dark' ? settingsIconDark : settingsIconLight} alt='ayarlar' aria-hidden />
             </button>
-            <button onClick={handleLogout} aria-label='oturumu kapat'>
-                <img className='icon' src={theme === 'dark' ? logoutIconDark : logoutIconLight} alt='çıkış' aria-hidden />
-            </button>
+            <Popup 
+              content='Oturumu Kapat' 
+              size='tiny'
+              trigger={
+                <button onClick={handleLogout} aria-label='oturumu kapat'>
+                  <img className='icon' src={theme === 'dark' ? logoutIconDark : logoutIconLight} alt='çıkış' aria-hidden />
+                </button>
+              } />
+
         </div>
         <div className='user-wrapper'>
             <p className='profile-name'>Admin</p>
