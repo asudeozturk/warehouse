@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 
 import Header from '../components/Header'
 import Menu from '../components/Menu'
+import Footer from '../components/Footer'
+
 import HomePage from '../page-components/HomePage'
 import AddProductPage from '../page-components/AddProductPage'
 import StockPage from '../page-components/StockPage'
@@ -45,6 +47,9 @@ function MainPage() {
         updatePage = {updateCurrentPage}/>
       
       {renderPage()}
+
+      <Footer 
+        updatePage = {updateCurrentPage}/>
     </div>
   );
 }
