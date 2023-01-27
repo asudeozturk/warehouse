@@ -10,4 +10,8 @@ export function getLoginStatus () {
 
 export function saveLoginStatus (status) {
     localStorage.setItem('loginStatus', status)
+
+    if(!status) {
+        localStorage.removeItem('page')
+    }
 }

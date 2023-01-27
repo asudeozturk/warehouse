@@ -12,8 +12,8 @@ import RemoveProductPage from '../page-components/RemoveProductPage'
 
 function MainPage(props) {
 
-  const [currentPage, setCurrentPage] = useState(getPageData());
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(getPageData()); //keeps track of the page to display
+  const [isMenuOpen, setIsMenuOpen] = useState(false); //true: menu is open , false: menu is closed
 
   const updateIsMenuOpen = (status) => {
     setIsMenuOpen(status)
@@ -24,14 +24,14 @@ function MainPage(props) {
     savePageData(pageName)
   }
 
-  const pages = {
+  const pages = { //stores page components
     'Anasayfa': <HomePage updatePage = {updateCurrentPage} />,
     'Ürün Girişi': <AddProductPage/>,
     'Stok Yönetimi': <StockPage updatePage = {updateCurrentPage}/>,
     'Ürün Çıkışı': <RemoveProductPage />,
   }
 
-  const renderPage = () => {
+  const renderPage = () => { //returns the appropriate page component to render
     return pages[currentPage]
   }
 

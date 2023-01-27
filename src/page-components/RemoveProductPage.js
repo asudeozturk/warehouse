@@ -10,11 +10,12 @@ function RemoveProductPage() {
         'productAmount': 0
     }
 
-    const [entries, setEntries] = useState([defaultEntry])
+    const [entries, setEntries] = useState([defaultEntry]) // keeps track of user entries
     const [formPopup, setFormPopup] = useState(false)
     const [popupMessage, setPopupMessage] = useState();
 
-    const renderProductEntries = () => {
+
+    const renderProductEntries = () => { //display user entries in the form
         return entries.map((item,index) => {
             return (
                 <div className='pr-item form-field-wrapper' key={index}>
@@ -50,7 +51,7 @@ function RemoveProductPage() {
         })
     }
 
-    const renderFormPopup = () => {
+    const renderFormPopup = () => { //display popup  with  message when form is submitted
         const icon = popupMessage.type === 'success' ? 'check circle' : 'times circle'
         return (
             <Modal id='form-popup'
@@ -75,24 +76,23 @@ function RemoveProductPage() {
     }
 
 
-    const handleAddEntry = () => {
+    const handleAddEntry = () => { //add an empty new entry to the list
         setEntries([...entries, {...defaultEntry}])
     }
 
-    const handleDeleteEntry = (index) => {
+    const handleDeleteEntry = (index) => { //delete entry from the list
         const updatedEntries = entries.slice(0, index).concat(entries.slice(index+1))        
         setEntries(updatedEntries)
     }
 
-    const handleUpdateEntry = (index, attribute, value) => {
+    const handleUpdateEntry = (index, attribute, value) => { //update product data when inputs change
         const updatedEntries = [...entries]
         updatedEntries[index][attribute] = value;
         setEntries(updatedEntries);
     }
 
 
-
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = (e) => { // validate form entries remove products on success
         e.preventDefault();  
         
         const button = document.getElementById('remove-product-submit-btn')
@@ -120,7 +120,7 @@ function RemoveProductPage() {
         button.removeAttribute('disabled');
     }
 
-    const validateEntries = () => {
+    const validateEntries = () => { //validate form inputs display errors in case of failure
         const prData = getProducts()
         const prNotFoundIndecies = []
         const prInsufficientIndecies = []
@@ -153,7 +153,7 @@ function RemoveProductPage() {
         })
     }
 
-    const displayNotFoundError = (indecies) => {
+    const displayNotFoundError = (indecies) => { //add error message if product is not found
         const inputs =  document.querySelectorAll('#remove-product-form .pr-item')
        
         
@@ -165,7 +165,7 @@ function RemoveProductPage() {
         })
     }
 
-    const displayInsufficientError = (indecies) => {
+    const displayInsufficientError = (indecies) => { //add error messages if product amount is wrong
         const inputs =  document.querySelectorAll('#remove-product-form .pr-item')
         
         

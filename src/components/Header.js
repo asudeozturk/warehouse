@@ -1,15 +1,14 @@
 import React, {useEffect} from 'react'
+import UserPanel from './UserPanel'
 
 import menuIconDark from '../assets/icons/menu-dark.svg'
 import menuIconLight from '../assets/icons/menu-light.svg'
-
 import logoWithName from '../assets/logo-with-name.png'
 
-import UserPanel from './UserPanel'
 
 function Header(props) {
 
-  useEffect(()=> {
+  useEffect(()=> { //change style of menu button when menu is open / closed
     const menuBtnElement= document.getElementById('menu-btn');
     const menuBtnIconElement= document.querySelector('#menu-btn .icon');
 
@@ -28,11 +27,11 @@ function Header(props) {
 
   }, [props.isMenuOpen])
 
-  const handleMenuClick = () => {
+  const handleMenuClick = () => { //update whether men is open or closed
     props.isMenuOpen ? props.updateMenuStatus(false) : props.updateMenuStatus(true)
   }
 
-  const handleHomeClick = () => {
+  const handleHomeClick = () => { //navigate to home page
     props.updatePage('Anasayfa') 
   }
 

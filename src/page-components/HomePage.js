@@ -10,7 +10,7 @@ import prRemoveIconLight from '../assets/icons/product-remove-light.svg'
 
 function HomePage(props) {
     
-    const inventoryActions = {
+    const inventoryActions = { //store info about icons
         'Ürün Girişi': {
             blueIcon : prAddIconBlue,
             lightIcon : prAddIconLight
@@ -25,14 +25,14 @@ function HomePage(props) {
         }
     } 
 
-    const handleActionClick = (e) => {
+    const handleActionClick = (e) => { //change current page and navigate
         const btnNameElement = e.currentTarget.querySelector('p');
         if(btnNameElement) {
             props.updatePage(btnNameElement.textContent);
         }
     }
 
-    const handleActionHover = (e) => {
+    const handleActionHover = (e) => { //style elements on hover
         const btnNameElement = e.currentTarget.querySelector('p');
         const btnIconElement = e.currentTarget.querySelector('.icon');
 
@@ -42,7 +42,7 @@ function HomePage(props) {
         }
     }
     
-    const handleActionUnHover = (e) => {
+    const handleActionUnHover = (e) => { //style elements to defaul on unhover
         const btnNameElement = e.currentTarget.querySelector('p');
         const btnIconElement = e.currentTarget.querySelector('.icon');
 

@@ -11,13 +11,12 @@ function AddProductPage() {
         'productAmount': 0
     }
 
-    const [newProducts, setNewProducts] = useState([defaultEntry])
+    const [newProducts, setNewProducts] = useState([defaultEntry]) // keeps track of form entries
     const [formPopup, setFormPopup] = useState(false)
-    const [popupMessage, setPopupMessage] = useState(0);
-
+    const [popupMessage, setPopupMessage] = useState(0); //number of products that were added to the stock
 
    
-    const renderProductEntries = () => {
+    const renderProductEntries = () => { //display user entries in the form 
         return newProducts.map((item,index) => {
             return (
                 <div className='pr-item form-field-wrapper' key={index}>
@@ -59,7 +58,7 @@ function AddProductPage() {
         })
     }
 
-    const renderFormPopup = () => {
+    const renderFormPopup = () => { //display popup  with  message
         return (
             <Modal id='form-popup'
                 closeIcon
@@ -82,22 +81,22 @@ function AddProductPage() {
         )     
     }
 
-    const handleAddProduct = () => {
+    const handleAddProduct = () => { //add an empty new entry to the list
         setNewProducts([...newProducts, {...defaultEntry}])
     }
 
-    const handleDeleteProduct = (index) => {
+    const handleDeleteProduct = (index) => { //delete entry from the list
         const updatedProducts = newProducts.slice(0, index).concat(newProducts.slice(index+1))        
         setNewProducts(updatedProducts)
     }
 
-    const handleUpdateProduct = (index, attribute, value) => {
+    const handleUpdateProduct = (index, attribute, value) => { //update product data when inputs change
         const updatedProducts = [...newProducts]
         updatedProducts[index][attribute] = value;
         setNewProducts(updatedProducts);
     }
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = (e) => { // add products to stock and display popup message if successful
         e.preventDefault();  
         
         const button = document.getElementById('add-product-submit-btn')

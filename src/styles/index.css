@@ -26,18 +26,14 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
   --color-heading-secondary: var(--color-black);
   --color-heading-tertiary: var(--color-gray-dark);
 
-
   --color-text-primary: var(--color-black);
   --color-text-secondary: var(--color-gray-dark);
   --color-text-tertiary: var(--color-white);
-
 
   --color-bg-primary: var(--color-white);
   --color-bg-secondary: var(--color-white-dark);
   --color-bg-tertiary: var(--color-blue);
   --color-bg-quaternary: var(--color-blue-dark);
-
-
 
   --color-border-primary: var(--color-gray-light);
   --color-border-secondary: var(--color-blue);
@@ -234,7 +230,7 @@ h4 {
 }
 
 #login-form {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 2em 1em;
   
@@ -258,6 +254,7 @@ h4 {
   display: flex;
   justify-content: space-between;
 }
+
 
 #login-forgot-btn {
   color: var(--color-btn-primary);
@@ -288,6 +285,7 @@ h4 {
   grid-template-columns: max-content 1fr;
   gap: 0.5em;
   align-items: center;
+  
 }
 
 #header #menu-btn {
@@ -331,7 +329,8 @@ h4 {
   color: var(--color-btn-secondary);
   min-height: 100vh;
   padding: 3em 3em 3em 1em;
-  position: fixed;
+  
+  position: absolute;
   transition: all 0.4s ease;
   z-index: 2;
 
@@ -396,9 +395,8 @@ h4 {
 }
 
 #menu .user-panel .user-wrapper .profile-photo {
-  border: 1px solid var(--color-gray-dark);
   border-radius: 50%;
-  box-shadow: 0 0 8px 0 rgba(100,100,100,.15);
+  box-shadow: 0 0 8px 0 rgba(200,200,200,0.8);
   padding: 3px;
   width: 3em;
 }
@@ -802,6 +800,11 @@ h4 {
     padding: 2em 3em 3em;
   }
 
+  #login-form #form-user-name,
+  #login-form #form-user-password {
+    min-width: 350px;
+  }
+
   /* ---------- HEADER STYLES ---------- */
 
   #header {
@@ -836,7 +839,6 @@ h4 {
   }
 
   #header .user-panel .user-wrapper .profile-photo {
-    border: 1px solid var(--color-border-tertiary);
     border-radius: 50%;
     box-shadow: 0 0 8px 0 rgba(100,100,100,.15);
     padding: 3px;

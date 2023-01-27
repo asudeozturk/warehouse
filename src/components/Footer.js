@@ -36,7 +36,7 @@ function Footer(props) {
         )
     }
 
-    const handlePageClick = (page) => {
+    const handlePageClick = (page) => { //update page when any of the navigation link clicked
         props.updatePage(page)
     }
 

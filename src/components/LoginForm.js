@@ -2,7 +2,7 @@ import React from 'react'
 
 function LoginForm(props) {
 
-    const handleLogin = () => {
+    const handleLogin = () => { //sign into the account
         props.updateLogin(true)
     }
 
@@ -13,12 +13,12 @@ function LoginForm(props) {
             <form onSubmit={handleLogin}>
                 <div className='form-field'>
                     <label htmlFor='form-user-name'>Kullanıcı Adı</label>
-                    <input type='text' id='form-user-name' name='form-user-name' required/>
+                    <input type='text' id='form-user-name' name='form-user-name' placeholder= 'admin' required/>
                 </div>
 
                 <div className='form-field'>
                     <label htmlFor='form-password'>Şifre</label>
-                    <input type='password' id='form-password' name='form-password' required/>
+                    <input type='password' id='form-password' name='form-password' placeholder= '123' required/>
                 </div>
 
                 <div className='form-field-wrapper'>
