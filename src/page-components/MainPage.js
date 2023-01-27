@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import {getPageData, savePageData} from '../utilities/pageUtility'
 import Header from '../components/Header'
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
@@ -10,9 +10,9 @@ import StockPage from '../page-components/StockPage'
 import RemoveProductPage from '../page-components/RemoveProductPage'
 
 
-function MainPage() {
+function MainPage(props) {
 
-  const [currentPage, setCurrentPage] = useState('Anasayfa');
+  const [currentPage, setCurrentPage] = useState(getPageData());
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const updateIsMenuOpen = (status) => {
@@ -21,6 +21,7 @@ function MainPage() {
 
   const updateCurrentPage = (pageName) => {
     setCurrentPage(pageName)
+    savePageData(pageName)
   }
 
   const pages = {
@@ -39,12 +40,14 @@ function MainPage() {
       <Header 
         isMenuOpen = {isMenuOpen}
         updateMenuStatus = {updateIsMenuOpen}
-        updatePage = {updateCurrentPage}/>
+        updatePage = {updateCurrentPage}
+        updateLogin = {props.updateLogin}/>
     
       <Menu 
         isMenuOpen = {isMenuOpen}
         updateMenuStatus = {updateIsMenuOpen}
-        updatePage = {updateCurrentPage}/>
+        updatePage = {updateCurrentPage}
+        updateLogin = {props.updateLogin}/>
       
       {renderPage()}
 

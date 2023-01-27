@@ -71,7 +71,8 @@ function Menu(props) {
         </ul>
       </nav>
       <UserPanel 
-        theme={'light'}/>
+        theme={'light'}
+        updateLogin={props.updateLogin}/>
     </aside>
   );
 }

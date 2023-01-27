@@ -12,16 +12,18 @@ import profileIcon from '../assets/icons/profile.svg'
 function UserPanel(props) {
 
   var theme = props.theme
+
+  const handleLogout = () => {
+    props.updateLogin(false)
+  }
   return (
     <section className='user-panel'>
         <div className='btn-wrapper'>
-            <button aria-label='yardım'>
-                <img className='icon' src={theme === 'dark' ? helpIconDark : helpIconLight} alt='soru işareti' aria-hidden />
-            </button>
+           
             <button aria-label='ayarlar'>
                 <img className='icon' src={theme === 'dark' ? settingsIconDark : settingsIconLight} alt='ayarlar' aria-hidden />
             </button>
-            <button aria-label='oturumu kapat'>
+            <button onClick={handleLogout} aria-label='oturumu kapat'>
                 <img className='icon' src={theme === 'dark' ? logoutIconDark : logoutIconLight} alt='çıkış' aria-hidden />
             </button>
         </div>

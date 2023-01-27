@@ -51,7 +51,8 @@ function Header(props) {
       </button>
 
       <UserPanel 
-        theme={'dark'}/>
+        theme={'dark'}
+        updateLogin= {props.updateLogin}/>
     </header>
   );
 }
