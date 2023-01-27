@@ -1,11 +1,16 @@
 
-export function saveNewProducts(data) {
+export function addProducts(data) {
     const parsedProducts = parseNewProducts(data)
     saveProductData(parsedProducts)
 }
 
 export function getProducts() {
     return readProductData()
+}
+
+export function removeProducts(data) {
+    const parsedProducts = parseProductsToRemove(data)
+    removeFromProductData(parsedProducts)
 }
 
 
@@ -28,13 +33,24 @@ function parseNewProducts(data) {
     return parsed
 }
 
+function parseProductsToRemove(data) {
+    const parsed = {}
+
+    data.forEach(item => {
+        parsed[item.productCode] = {
+            'amount': parseInt(item.productAmount)
+        }        
+    });
+
+    return parsed
+}
+
+
 function saveProductData(data) {
     const productData = readProductData()
     if(productData) {
         for(var code in data) {
-            console.log(productData[code])
             if(productData[code]) {
-                console.log('exists')
                 productData[code]['desc'] = data[code].desc
                 productData[code]['amount'] += data[code].amount
             }
@@ -54,7 +70,22 @@ function saveProductData(data) {
 
     
 }
-  
+
+function removeFromProductData(data) {
+    const productData = readProductData()
+    if(productData) {
+        for(var code in data) {
+            productData[code]['amount'] -= data[code].amount
+            
+
+            if(productData[code]['amount'] == 0) {
+                delete productData[code]
+            }
+        }
+        localStorage.setItem('product', JSON.stringify(productData))
+    }
+}
+
 function readProductData() {
     return JSON.parse(localStorage.getItem('product'))
 }
