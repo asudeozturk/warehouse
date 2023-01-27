@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Header, Modal } from 'semantic-ui-react'
+import {Header, Modal, Button } from 'semantic-ui-react'
 import {addProducts} from '../utilities/dataUtility.js'
 import deleteIcon from '../assets/icons/close-blue.svg'
 
@@ -73,6 +73,11 @@ function AddProductPage() {
                         {popupMessage} ürün depoya eklendi.
                     </p>
                 </Modal.Content>
+                <Modal.Actions>
+                    <Button  onClick={() => setFormPopup(false)}>
+                        Tamam
+                    </Button>
+                </Modal.Actions>
             </Modal>
         )     
     }

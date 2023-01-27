@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Header, Modal } from 'semantic-ui-react'
+import {Header, Modal, Button } from 'semantic-ui-react'
 import {removeProducts, getProducts} from '../utilities/dataUtility.js'
 import deleteIcon from '../assets/icons/close-blue.svg'
 
@@ -65,6 +65,11 @@ function RemoveProductPage() {
                         {popupMessage.message}
                     </p>
                 </Modal.Content>
+                <Modal.Actions>
+                    <Button onClick={() => setFormPopup(false)}>
+                        Tamam
+                    </Button>
+                </Modal.Actions>
             </Modal>
         )     
     }

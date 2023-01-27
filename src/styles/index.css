@@ -181,6 +181,14 @@ h4 {
   margin-bottom: 1em;
 }
 
+#form-popup .header,
+#form-popup .content,
+#form-popup .actions {
+  background-color: var(--color-bg-secondary);
+  border: none;
+
+}
+
 /* ---------- LOGIN PAGE STYLES ---------- */
 
 #login-page {
